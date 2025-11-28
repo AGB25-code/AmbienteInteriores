@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História | Ambiente Interiores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS CUSTOM PROPERTIES & RESET
+        ======================================== */
+        :root {
+            --color-cream: #F5F1EB;
+            --color-warm-white: #FAFAF8;
+            --color-sand: #E8E0D5;
+            --color-beige: #D4C4B0;
+            --color-taupe: #B8A99A;
+            --color-brown: #8B7355;
+            --color-dark-brown: #5C4A3A;
+            --color-charcoal: #3A3A3A;
+            --color-black: #1A1A1A;
+
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-2xl: 8rem;
+
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--color-black);
+            background-color: var(--color-warm-white);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+        ======================================== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--color-black);
+        }
+
+        /* ========================================
+           LAYOUT UTILITIES
+        ======================================== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #efefef;
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-sm) 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            border-bottom: 1px solid var(--color-sand);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0.35rem 0;
+            }
+
+            .nav-container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .nav-logo {
+                height: 40px;
+            }
+
+            .nav-logo video,
+            .nav-logo img {
+                height: 40px;
+                transform: scale(1.05);
+            }
+
+            .mobile-menu-toggle {
+                padding: 0.25rem;
+            }
+
+            .mobile-menu-toggle span {
+                width: 22px;
+                margin: 4px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0.25rem 0;
+            }
+
+            .nav-logo {
+                height: 34px;
+            }
+
+            .nav-logo video,
+            .nav-logo img {
+                height: 34px;
+                transform: scale(1.02);
+            }
+        }
+
+        .nav.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+
+        .nav.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo video,
+        .nav-logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+            transform: scale(1.2);
+            transform-origin: left center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-brown), var(--color-taupe));
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link:focus {
+            outline: none;
+        }
+
+        .nav-link:focus-visible {
+            outline: 2px solid var(--color-brown);
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(250, 250, 248, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-sand);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            list-style: none;
+        }
+
+        .nav-dropdown.active .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-dropdown-menu li {
+            padding: 0;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: var(--color-charcoal);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown-menu a:hover {
+            background-color: var(--color-cream);
+            color: var(--color-dark-brown);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: var(--spacing-md);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            transition: var(--transition-smooth);
+            opacity: 0.5;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            color: var(--color-black);
+            opacity: 1;
+        }
+
+        .lang-btn.active {
+            font-weight: 500;
+        }
+
+        .lang-separator {
+            color: var(--color-black);
+            opacity: 0.3;
+            font-size: 0.75rem;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-black);
+            margin: 5px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.8);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background-color: var(--color-warm-white);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 0;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-sand);
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1.25rem 0;
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                background-color: var(--color-cream);
+                margin-top: 0.5rem;
+                padding-left: 1rem;
+            }
+
+            .nav-dropdown.active .nav-dropdown-menu {
+                display: block;
+            }
+
+            .lang-switcher {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+
+        /* ========================================
+           PAGE HERO
+        ======================================== */
+        .page-hero {
+            padding: 100px 0 0;
+            background: transparent;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero h1 {
+            color: var(--color-black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .page-hero .subtitle {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-dark-brown);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           TIMELINE
+        ======================================== */
+        .timeline-section {
+            background-color: var(--color-warm-white);
+            padding: var(--spacing-2xl) 0;
+            border-top: none;
+            scroll-margin-top: 120px;
+        }
+
+        .timeline-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-xl);
+            border-top: none;
+        }
+
+        .timeline-intro h2 {
+            color: var(--color-black);
+            margin-bottom: var(--spacing-md);
+            margin-top: -1rem;
+            border-top: none;
+        }
+
+        .timeline-intro p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--color-charcoal);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--color-taupe), var(--color-brown), var(--color-taupe));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 40px);
+            padding: var(--spacing-md);
+            background-color: var(--color-cream);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-dark-brown);
+            border: 4px solid var(--color-warm-white);
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-year {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--color-dark-brown);
+            margin-bottom: var(--spacing-xs);
+            line-height: 1;
+        }
+
+        .timeline-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .timeline-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-charcoal);
+        }
+
+        /* ========================================
+           FAMOUS CLIENTS SECTION
+        ======================================== */
+        .famous-clients {
+            background-color: var(--color-cream);
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .famous-clients-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .famous-clients-intro h2 {
+            color: var(--color-black);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .famous-clients-intro p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--color-charcoal);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .client-card {
+            background-color: var(--color-warm-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition-smooth);
+        }
+
+        .client-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .client-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-taupe), var(--color-sand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .client-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.3), transparent);
+        }
+
+        .client-info {
+            padding: var(--spacing-md);
+        }
+
+        .client-name {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-dark-brown);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .client-role {
+            font-size: 0.875rem;
+            font-style: italic;
+            color: var(--color-brown);
+            margin-bottom: var(--spacing-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .client-story {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-charcoal);
+        }
+
+        .client-quote {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-left: 3px solid var(--color-dark-brown);
+            background-color: var(--color-cream);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .client-quote p {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.125rem;
+            color: var(--color-dark-brown);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           LEGACY SECTION
+        ======================================== */
+        .legacy-section {
+            background-color: var(--color-warm-white);
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .legacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .legacy-content h2 {
+            color: var(--color-black);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .legacy-content p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .legacy-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-beige);
+            color: var(--color-dark-brown);
+            padding: 1rem 2.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-top: var(--spacing-lg);
+            border-radius: 50px;
+            border: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .legacy-badge:hover {
+            background-color: var(--color-sand);
+            color: var(--color-dark-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 196, 176, 0.3);
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        .footer {
+            background-color: var(--color-black);
+            color: var(--color-sand);
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            color: var(--color-warm-white);
+            margin-bottom: var(--spacing-md);
+            font-weight: 500;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-warm-white);
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            font-size: 0.8125rem;
+            color: var(--color-taupe);
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: var(--color-warm-white);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--color-taupe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover {
+            border-color: var(--color-warm-white);
+            background-color: var(--color-warm-white);
+        }
+
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-taupe);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover svg {
+            fill: var(--color-black);
+        }
+
+        .footer-newsletter {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-newsletter p {
+            font-size: 0.8125rem;
+            color: var(--color-taupe);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.8125rem;
+            background-color: transparent;
+            border: 1px solid var(--color-taupe);
+            color: var(--color-warm-white);
+            border-radius: 4px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--color-taupe);
+        }
+
+        .newsletter-form button {
+            padding: 0.75rem 1rem;
+            background-color: var(--color-beige);
+            color: var(--color-dark-brown);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--color-sand) !important;
+            color: var(--color-dark-brown) !important;
+        }
+
+        .newsletter-consent {
+            font-size: 0.6875rem;
+            color: var(--color-taupe);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(184, 169, 154, 0.2);
+            padding-top: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--color-taupe);
+        }
+
+        .footer-credit {
+            font-size: 0.6875rem;
+            color: var(--color-taupe);
+            opacity: 0.7;
+        }
+
+        /* ========================================
+           RESPONSIVE STYLES
+        ======================================== */
+        @media (max-width: 1024px) {
+            :root {
+                --spacing-lg: 3rem;
+                --spacing-xl: 4rem;
+                --spacing-2xl: 5rem;
+            }
+
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .nav-logo img {
+                height: 50px;
+                transform: scale(1.1);
+            }
+
+            .nav-logo video,
+            .nav-logo img {
+                height: 50px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 60px;
+            }
+
+            .timeline-marker {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-md: 1.5rem;
+                --spacing-lg: 2.5rem;
+                --spacing-xl: 3rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-logo video,
+            .nav-logo img {
+                height: 45px;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .footer-column {
+                padding-bottom: var(--spacing-md);
+                border-bottom: 1px solid rgba(184, 169, 154, 0.1);
+            }
+
+            .footer-column:last-child {
+                border-bottom: none;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .whatsapp-float {
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .whatsapp-float a {
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo video,
+            .nav-logo img {
+                height: 38px;
+            }
+
+            .whatsapp-float {
+                bottom: 100px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========================================
+           COOKIE CONSENT POPUP
+        ======================================== */
+        .cookie-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 10000;
+            background-color: var(--color-warm-white);
+            padding: var(--spacing-md);
+            max-width: 340px;
+            width: calc(100% - 48px);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--color-sand);
+        }
+
+        .cookie-popup h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .cookie-popup p {
+            font-size: 0.8125rem;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        .cookie-popup a {
+            color: var(--color-dark-brown);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .cookie-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .cookie-btn-accept {
+            background-color: var(--color-dark-brown);
+            color: var(--color-warm-white);
+        }
+
+        .cookie-btn-accept:hover {
+            background-color: var(--color-black);
+        }
+
+        .cookie-btn-reject {
+            background-color: transparent;
+            color: var(--color-charcoal);
+            border: 1px solid var(--color-sand);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: var(--color-charcoal);
+            color: var(--color-black);
+        }
+
+        .cookie-popup.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-popup {
+                max-height: calc(100vh - 32px);
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cookie-popup {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                width: auto;
+                max-width: none;
+            }
+
+            .cookie-buttons {
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
+        }
+
+        /* ========================================
+           FLOATING WHATSAPP BUTTON
+        ======================================== */
+        /* Fixed position keeps button visible while scrolling */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+        }
+
+        /* Circular button with beige color */
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background-color: var(--color-beige);
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(212, 196, 176, 0.4);
+            transition: var(--transition-smooth);
+        }
+
+        /* Hover effect: scale up slightly */
+        .whatsapp-float a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 196, 176, 0.6);
+            background-color: var(--color-taupe);
+        }
+
+        /* WhatsApp icon styling */
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-dark-brown);
+        }
+
+        /* Mobile responsive: slightly smaller on small screens */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .whatsapp-float a {
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         COOKIE CONSENT POPUP
+    ======================================== -->
+    <div id="cookieConsent" class="cookie-popup">
+        <h3 data-pt="Utilizamos Cookies" data-en="We Use Cookies">Utilizamos Cookies</h3>
+        <p data-pt="Este site utiliza cookies para melhorar a sua experiência. Consulte a nossa <a href='cookies.html'>Política de Cookies</a> para mais informações." data-en="This site uses cookies to improve your experience. See our <a href='cookies.html'>Cookies Policy</a> for more information.">Este site utiliza cookies para melhorar a sua experiência. Consulte a nossa <a href="cookies.html">Política de Cookies</a> para mais informações.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-btn-reject" onclick="handleCookieChoice('rejected')" data-pt="Rejeitar" data-en="Reject">Rejeitar</button>
+            <button class="cookie-btn cookie-btn-accept" onclick="handleCookieChoice('accepted')" data-pt="Aceitar" data-en="Accept">Aceitar</button>
+        </div>
+    </div>
+
+    <!-- ========================================
+         NAVIGATION
+    ======================================== -->
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.png" alt="Ambiente Interiores">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link" data-pt="Início" data-en="Home">Início</a></li>
+                <li><a href="#momentos-marcantes" class="nav-link" data-pt="História" data-en="Heritage">História</a></li>
+                <li><a href="collection.html" class="nav-link" data-pt="Catálogo" data-en="Catalogue">Catálogo</a></li>
+                <li class="nav-dropdown">
+                    <a href="portfolio.html" class="nav-link" data-pt="Portfólio" data-en="Portfolio">Portfólio</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="portfolio.html" data-pt="Particulares" data-en="Private">Particulares</a></li>
+                        <li><a href="profissionais.html" data-pt="Profissionais" data-en="Professional">Profissionais</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact" class="nav-link" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         PAGE HERO
+    ======================================== -->
+    <section class="page-hero">
+        <div class="container">
+        </div>
+    </section>
+
+    <!-- ========================================
+         TIMELINE SECTION
+    ======================================== -->
+    <section class="timeline-section" id="momentos-marcantes">
+        <div class="container">
+            <div class="timeline-intro">
+                <h2 data-pt="Momentos Marcantes" data-en="Milestone Moments">Momentos Marcantes</h2>
+                <p data-pt="Ao longo de mais de 35 anos, a Cunha Mobiliário tem sido a escolha de clientes exigentes que procuram excelência, elegância e qualidade incomparável. A nossa jornada está repleta de projetos emblemáticos e parcerias com personalidades notáveis." data-en="Over 35 years, Cunha Mobiliário has been the choice of discerning clients seeking excellence, elegance, and unparalleled quality. Our journey is filled with iconic projects and partnerships with notable personalities.">Ao longo de mais de 35 anos, a Cunha Mobiliário tem sido a escolha de clientes exigentes que procuram excelência, elegância e qualidade incomparável. A nossa jornada está repleta de projetos emblemáticos e parcerias com personalidades notáveis.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="1988" data-en="1988">1988</div>
+                        <h3 class="timeline-title" data-pt="Os Primeiros Passos" data-en="The First Steps">Os Primeiros Passos</h3>
+                        <p class="timeline-description" data-pt="Fundação da Cunha Mobiliário numa pequena oficina familiar. As primeiras encomendas surgem de clientes locais que rapidamente reconhecem a qualidade excecional do nosso trabalho artesanal." data-en="Foundation of Cunha Mobiliário in a small family workshop. The first orders came from local clients who quickly recognized the exceptional quality of our artisanal work.">Fundação da Cunha Mobiliário numa pequena oficina familiar. As primeiras encomendas surgem de clientes locais que rapidamente reconhecem a qualidade excecional do nosso trabalho artesanal.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="1995" data-en="1995">1995</div>
+                        <h3 class="timeline-title" data-pt="Reconhecimento Nacional" data-en="National Recognition">Reconhecimento Nacional</h3>
+                        <p class="timeline-description" data-pt="A nossa reputação cresce exponencialmente. Somos escolhidos para mobilar a residência privada do embaixador português em Madrid, um marco que estabelece a nossa presença no mercado de luxo." data-en="Our reputation grows exponentially. We were chosen to furnish the private residence of the Portuguese ambassador in Madrid, a milestone that established our presence in the luxury market.">A nossa reputação cresce exponencialmente. Somos escolhidos para mobilar a residência privada do embaixador português em Madrid, um marco que estabelece a nossa presença no mercado de luxo.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="2002" data-en="2002">2002</div>
+                        <h3 class="timeline-title" data-pt="Clientela de Prestígio" data-en="Prestigious Clientele">Clientela de Prestígio</h3>
+                        <p class="timeline-description" data-pt="Criamos peças personalizadas para o empresário e filantropo António Silva, cujo escritório em Lisboa se tornou uma referência de design elegante. Este projeto abre portas para colaborações com outras figuras influentes do mundo dos negócios." data-en="We created custom pieces for businessman and philanthropist António Silva, whose Lisbon office became a benchmark for elegant design. This project opened doors to collaborations with other influential business figures.">Criamos peças personalizadas para o empresário e filantropo António Silva, cujo escritório em Lisboa se tornou uma referência de design elegante. Este projeto abre portas para colaborações com outras figuras influentes do mundo dos negócios.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="2008" data-en="2008">2008</div>
+                        <h3 class="timeline-title" data-pt="Expansão Europeia" data-en="European Expansion">Expansão Europeia</h3>
+                        <p class="timeline-description" data-pt="Mobilámos hotéis boutique em Barcelona e Paris, consolidando a nossa presença no mercado europeu de mobiliário de alta gama. A sofisticação e durabilidade das nossas peças conquistam clientes internacionais." data-en="We furnished boutique hotels in Barcelona and Paris, consolidating our presence in the European high-end furniture market. The sophistication and durability of our pieces won over international clients.">Mobilámos hotéis boutique em Barcelona e Paris, consolidando a nossa presença no mercado europeu de mobiliário de alta gama. A sofisticação e durabilidade das nossas peças conquistam clientes internacionais.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="2015" data-en="2015">2015</div>
+                        <h3 class="timeline-title" data-pt="Arte e Cultura" data-en="Art and Culture">Arte e Cultura</h3>
+                        <p class="timeline-description" data-pt="Fomos selecionados para criar o mobiliário do gabinete privado da Dra. Helena Mendes, conceituada curadora de arte contemporânea. O projeto combinou funcionalidade com estética minimalista, refletindo a visão artística da cliente." data-en="We were selected to create the furniture for Dr. Helena Mendes's private office, a renowned contemporary art curator. The project combined functionality with minimalist aesthetics, reflecting the client's artistic vision.">Fomos selecionados para criar o mobiliário do gabinete privado da Dra. Helena Mendes, conceituada curadora de arte contemporânea. O projeto combinou funcionalidade com estética minimalista, refletindo a visão artística da cliente.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="2020" data-en="2020">2020</div>
+                        <h3 class="timeline-title" data-pt="Inovação Sustentável" data-en="Sustainable Innovation">Inovação Sustentável</h3>
+                        <p class="timeline-description" data-pt="Lançámos a nossa linha de mobiliário sustentável, utilizando apenas madeiras certificadas e técnicas eco-conscientes. Esta iniciativa atrai clientes ambientalmente responsáveis, incluindo CEOs de empresas tecnológicas e organizações sem fins lucrativos." data-en="We launched our sustainable furniture line, using only certified wood and eco-conscious techniques. This initiative attracted environmentally responsible clients, including tech company CEOs and non-profit organizations.">Lançámos a nossa linha de mobiliário sustentável, utilizando apenas madeiras certificadas e técnicas eco-conscientes. Esta iniciativa atrai clientes ambientalmente responsáveis, incluindo CEOs de empresas tecnológicas e organizações sem fins lucrativos.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year" data-pt="2024" data-en="2024">2024</div>
+                        <h3 class="timeline-title" data-pt="Legado e Futuro" data-en="Legacy and Future">Legado e Futuro</h3>
+                        <p class="timeline-description" data-pt="Celebramos mais de três décadas de excelência, com milhares de projetos concluídos e uma clientela fiel que inclui diplomatas, empresários, artistas e instituições culturais. O nosso compromisso com a qualidade permanece inabalável." data-en="We celebrate over three decades of excellence, with thousands of completed projects and a loyal clientele including diplomats, entrepreneurs, artists, and cultural institutions. Our commitment to quality remains unwavering.">Celebramos mais de três décadas de excelência, com milhares de projetos concluídos e uma clientela fiel que inclui diplomatas, empresários, artistas e instituições culturais. O nosso compromisso com a qualidade permanece inabalável.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FAMOUS CLIENTS SECTION
+    ======================================== -->
+    <section class="famous-clients">
+        <div class="container">
+            <div class="famous-clients-intro">
+                <h2 data-pt="Clientes de Destaque" data-en="Distinguished Clients">Clientes de Destaque</h2>
+                <p data-pt="Ao longo dos anos, tivemos o privilégio de colaborar com personalidades notáveis que confiaram na Cunha Mobiliário para criar espaços únicos que refletem o seu estilo e visão." data-en="Over the years, we have had the privilege of collaborating with notable personalities who trusted Cunha Mobiliário to create unique spaces that reflect their style and vision.">Ao longo dos anos, tivemos o privilégio de colaborar com personalidades notáveis que confiaram na Cunha Mobiliário para criar espaços únicos que refletem o seu estilo e visão.</p>
+            </div>
+
+            <div class="clients-grid">
+                <!-- Client 1 -->
+                <div class="client-card">
+                    <div class="client-image">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--color-dark-brown)" stroke-width="1" style="z-index: 1;">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div class="client-info">
+                        <h3 class="client-name" data-pt="Embaixador Manuel Costa" data-en="Ambassador Manuel Costa">Embaixador Manuel Costa</h3>
+                        <p class="client-role" data-pt="Diplomata" data-en="Diplomat">Diplomata</p>
+                        <p class="client-story" data-pt="Em 1995, fomos escolhidos para mobilar a residência oficial do Embaixador Costa em Madrid. Criámos peças que combinavam elegância portuguesa com funcionalidade diplomática, incluindo uma mesa de jantar para 16 pessoas em nogueira maciça e um escritório executivo personalizado." data-en="In 1995, we were chosen to furnish Ambassador Costa's official residence in Madrid. We created pieces combining Portuguese elegance with diplomatic functionality, including a solid walnut dining table for 16 and a custom executive office.">Em 1995, fomos escolhidos para mobilar a residência oficial do Embaixador Costa em Madrid. Criámos peças que combinavam elegância portuguesa com funcionalidade diplomática, incluindo uma mesa de jantar para 16 pessoas em nogueira maciça e um escritório executivo personalizado.</p>
+                        <div class="client-quote">
+                            <p data-pt="&ldquo;A Cunha Mobiliário entendeu perfeitamente a necessidade de criar espaços que representassem Portugal com dignidade e requinte.&rdquo;" data-en="&ldquo;Cunha Mobiliário perfectly understood the need to create spaces that represented Portugal with dignity and refinement.&rdquo;">&ldquo;A Cunha Mobiliário entendeu perfeitamente a necessidade de criar espaços que representassem Portugal com dignidade e requinte.&rdquo;</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client 2 -->
+                <div class="client-card">
+                    <div class="client-image">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--color-dark-brown)" stroke-width="1" style="z-index: 1;">
+                            <rect x="3" y="4" width="18" height="18" rx="2"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="client-info">
+                        <h3 class="client-name" data-pt="António Silva" data-en="António Silva">António Silva</h3>
+                        <p class="client-role" data-pt="Empresário e Filantropo" data-en="Entrepreneur & Philanthropist">Empresário e Filantropo</p>
+                        <p class="client-story" data-pt="Em 2002, o Sr. Silva encomendou mobiliário para o seu escritório em Lisboa. Desenvolvemos uma biblioteca em cerejeira com 4 metros de altura, estantes ajustáveis e iluminação integrada. O projeto incluiu também cadeiras executivas em couro italiano e uma mesa de reuniões oval para 12 pessoas." data-en="In 2002, Mr. Silva commissioned furniture for his Lisbon office. We developed a 4-meter-high cherry wood library with adjustable shelves and integrated lighting. The project also included Italian leather executive chairs and an oval meeting table for 12.">Em 2002, o Sr. Silva encomendou mobiliário para o seu escritório em Lisboa. Desenvolvemos uma biblioteca em cerejeira com 4 metros de altura, estantes ajustáveis e iluminação integrada. O projeto incluiu também cadeiras executivas em couro italiano e uma mesa de reuniões oval para 12 pessoas.</p>
+                        <div class="client-quote">
+                            <p data-pt="&ldquo;Cada peça é uma obra de arte funcional. A atenção ao detalhe é incomparável.&rdquo;" data-en="&ldquo;Each piece is a functional work of art. The attention to detail is incomparable.&rdquo;">&ldquo;Cada peça é uma obra de arte funcional. A atenção ao detalhe é incomparável.&rdquo;</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client 3 -->
+                <div class="client-card">
+                    <div class="client-image">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--color-dark-brown)" stroke-width="1" style="z-index: 1;">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                            <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
+                            <polyline points="7.5 19.79 7.5 14.6 3 12"/>
+                            <polyline points="21 12 16.5 14.6 16.5 19.79"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <div class="client-info">
+                        <h3 class="client-name" data-pt="Dra. Helena Mendes" data-en="Dr. Helena Mendes">Dra. Helena Mendes</h3>
+                        <p class="client-role" data-pt="Curadora de Arte Contemporânea" data-en="Contemporary Art Curator">Curadora de Arte Contemporânea</p>
+                        <p class="client-story" data-pt="Em 2015, a Dra. Mendes procurou-nos para criar o mobiliário do seu gabinete privado. O desafio era combinar minimalismo com funcionalidade, criando peças que não competissem visualmente com as obras de arte. Desenvolvemos soluções em carvalho claro com linhas depuradas e encaixes invisíveis." data-en="In 2015, Dr. Mendes sought us out to create furniture for her private office. The challenge was to combine minimalism with functionality, creating pieces that wouldn't visually compete with artworks. We developed solutions in light oak with clean lines and invisible joints.">Em 2015, a Dra. Mendes procurou-nos para criar o mobiliário do seu gabinete privado. O desafio era combinar minimalismo com funcionalidade, criando peças que não competissem visualmente com as obras de arte. Desenvolvemos soluções em carvalho claro com linhas depuradas e encaixes invisíveis.</p>
+                        <div class="client-quote">
+                            <p data-pt="&ldquo;A Cunha Mobiliário transformou o meu espaço numa galeria viva onde o mobiliário é tão artístico quanto discreto.&rdquo;" data-en="&ldquo;Cunha Mobiliário transformed my space into a living gallery where the furniture is as artistic as it is discreet.&rdquo;">&ldquo;A Cunha Mobiliário transformou o meu espaço numa galeria viva onde o mobiliário é tão artístico quanto discreto.&rdquo;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         LEGACY SECTION
+    ======================================== -->
+    <section class="legacy-section">
+        <div class="container">
+            <div class="legacy-content">
+                <h2 data-pt="Um Legado de Excelência" data-en="A Legacy of Excellence">Um Legado de Excelência</h2>
+                <p data-pt="Cada projeto que realizamos é um testemunho do nosso compromisso com a excelência. Da conceção à entrega final, garantimos que cada peça reflete não apenas a mestria técnica dos nossos artesãos, mas também a visão e personalidade única de cada cliente." data-en="Every project we undertake is a testament to our commitment to excellence. From conception to final delivery, we ensure that each piece reflects not only the technical mastery of our craftsmen but also the unique vision and personality of each client.">Cada projeto que realizamos é um testemunho do nosso compromisso com a excelência. Da conceção à entrega final, garantimos que cada peça reflete não apenas a mestria técnica dos nossos artesãos, mas também a visão e personalidade única de cada cliente.</p>
+                <p data-pt="O reconhecimento que recebemos de clientes ilustres ao longo de três décadas não é apenas motivo de orgulho, é a inspiração que nos move a continuar a elevar os padrões do design e da manufatura de mobiliário em Portugal." data-en="The recognition we have received from distinguished clients over three decades is not only a source of pride, it is the inspiration that drives us to continue raising the standards of furniture design and manufacturing in Portugal.">O reconhecimento que recebemos de clientes ilustres ao longo de três décadas não é apenas motivo de orgulho, é a inspiração que nos move a continuar a elevar os padrões do design e da manufatura de mobiliário em Portugal.</p>
+                <div class="legacy-badge" data-pt="Tradição desde 1988" data-en="Tradition since 1988">Tradição desde 1988</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FLOATING WHATSAPP BUTTON
+         Opens WhatsApp chat when clicked
+    ======================================== -->
+    <div class="whatsapp-float">
+        <!-- Replace 351XXXXXXXXX with actual phone number -->
+        <a href="https://wa.me/351XXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <!-- Official WhatsApp SVG icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <!-- Column 1: Logo & Social -->
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">Ambiente Interiores</a>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Pinterest">
+                            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Legal -->
+                <div class="footer-column">
+                    <h4 data-pt="Legal" data-en="Legal">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html" class="footer-link" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a></li>
+                        <li><a href="terms.html" class="footer-link" data-pt="Termos e Condições" data-en="Terms & Conditions">Termos e Condições</a></li>
+                        <li><a href="cookies.html" class="footer-link" data-pt="Política de Cookies" data-en="Cookies Policy">Política de Cookies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Newsletter -->
+                <div class="footer-column">
+                    <h4 data-pt="Newsletter" data-en="Newsletter">Newsletter</h4>
+                    <div class="footer-newsletter">
+                        <p data-pt="Subscreva para novidades e inspiração de design." data-en="Subscribe for news and design inspiration.">Subscreva para novidades e inspiração de design.</p>
+                        <form class="newsletter-form" onsubmit="return handleNewsletter(event)">
+                            <input type="email" placeholder="Email" required>
+                            <button type="submit" data-pt="Subscrever" data-en="Subscribe">Subscrever</button>
+                        </form>
+                        <p class="newsletter-consent" data-pt="Ao subscrever, concorda com a nossa Política de Privacidade. Pode cancelar a qualquer momento." data-en="By subscribing, you agree to our Privacy Policy. You can unsubscribe at any time.">Ao subscrever, concorda com a nossa Política de Privacidade. Pode cancelar a qualquer momento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© <script>document.write(new Date().getFullYear())</script> Ambiente Interiores, Lda. <span data-pt="Todos os direitos reservados." data-en="All rights reserved.">Todos os direitos reservados.</span></p>
+                <p class="footer-credit" data-pt="Site desenvolvido por AGB" data-en="Website developed by AGB">Site desenvolvido por AGB</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+    <script>
+        // Language Switcher
+        let currentLang = 'pt';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // Cookie consent management
+        function handleCookieChoice(choice) {
+            localStorage.setItem('cookieConsent', choice);
+            document.getElementById('cookieConsent').classList.add('hidden');
+
+            if (choice === 'accepted') {
+                console.log('Cookies accepted - enable tracking scripts here');
+            } else {
+                console.log('Cookies rejected - only essential cookies active');
+            }
+        }
+
+        // Check cookie consent on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (consent) {
+                document.getElementById('cookieConsent').classList.add('hidden');
+            }
+        });
+
+        // Newsletter handler placeholder
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert('Newsletter subscription: ' + email + '\nIntegrate with your email marketing platform.');
+            event.target.reset();
+            return false;
+        }
+
+        // Portfolio dropdown click toggle
+        const navDropdown = document.querySelector('.nav-dropdown');
+        const dropdownLink = navDropdown ? navDropdown.querySelector('.nav-link') : null;
+
+        if (dropdownLink) {
+            dropdownLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                navDropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navDropdown.contains(e.target)) {
+                    navDropdown.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    navDropdown.classList.remove('active');
+                }
+            });
+        }
+
+
+        // Header fade on scroll
+        let lastScrollY = 0;
+        let ticking = false;
+        const nav = document.querySelector('.nav');
+
+        function updateNav() {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < 100) {
+                nav.classList.remove('hidden');
+                nav.classList.add('visible');
+            } else if (currentScrollY > lastScrollY) {
+                nav.classList.add('hidden');
+                nav.classList.remove('visible');
+            } else {
+                nav.classList.remove('hidden');
+                nav.classList.add('visible');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateNav);
+                ticking = true;
+            }
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const navMenu = document.getElementById('navMenu');
+
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMobileMenu() {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (!link.parentElement.classList.contains('nav-dropdown')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Portfolio dropdown click toggle
+        const navDropdown = document.querySelector('.nav-dropdown');
+        const dropdownLink = navDropdown ? navDropdown.querySelector('.nav-link') : null;
+
+        if (dropdownLink) {
+            dropdownLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                navDropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navDropdown.contains(e.target)) {
+                    navDropdown.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    navDropdown.classList.remove('active');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(apt-get update:*)",
+      "Bash(apt-get install:*)",
+      "Bash(powershell.exe -Command Get-Command)",
+      "Bash(powershell.exe -Command:*)",
+      "Bash(python3:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

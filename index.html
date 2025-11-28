@@ -1,0 +1,2478 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambiente Interiores | Mobiliário e Design de Interiores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           CSS CUSTOM PROPERTIES & RESET
+        ======================================== */
+        :root {
+            --color-cream: #F5F1EB;
+            --color-warm-white: #FAFAF8;
+            --color-sand: #E8E0D5;
+            --color-beige: #D4C4B0;
+            --color-taupe: #B8A99A;
+            --color-brown: #8B7355;
+            --color-dark-brown: #5C4A3A;
+            --color-charcoal: #3A3A3A;
+            --color-black: #1A1A1A;
+
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --spacing-2xl: 8rem;
+
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--color-black);
+            background-color: var(--color-warm-white);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+        ======================================== */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--color-black);
+        }
+
+        .subtitle {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--color-black);
+        }
+
+        /* ========================================
+           LAYOUT UTILITIES
+        ======================================== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-header h2 {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-black);
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-black);
+        }
+
+        /* ========================================
+           BUTTONS
+        ======================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary {
+            background-color: var(--color-beige);
+            color: var(--color-dark-brown);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-sand) !important;
+            color: var(--color-dark-brown) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 224, 213, 0.5);
+        }
+
+        .btn-primary::after {
+            content: '→';
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover::after {
+            transform: translateX(4px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-dark-brown);
+            border: 2px solid var(--color-beige);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-sand) !important;
+            color: var(--color-dark-brown) !important;
+        }
+
+        .btn-outline::after {
+            content: '→';
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-outline:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #efefef;
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-sm) 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            border-bottom: 1px solid var(--color-sand);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0.35rem 0;
+            }
+
+            .nav-container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .nav-logo {
+                height: 40px;
+            }
+
+            .nav-logo video,
+            .nav-logo img {
+                height: 40px;
+                transform: scale(1.05);
+            }
+
+            .mobile-menu-toggle {
+                padding: 0.25rem;
+            }
+
+            .mobile-menu-toggle span {
+                width: 22px;
+                margin: 4px 0;
+            }
+        }
+
+        .nav.hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+
+        .nav.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo video,
+        .nav-logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+            transform: scale(1.2);
+            transform-origin: left center;
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0.25rem 0;
+            }
+
+            .nav-logo {
+                height: 34px;
+            }
+
+            .nav-logo video,
+            .nav-logo img {
+                height: 34px;
+                transform: scale(1.02);
+            }
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--color-brown), var(--color-taupe));
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-link:focus {
+            outline: none;
+        }
+
+        .nav-link:focus-visible {
+            outline: 2px solid var(--color-brown);
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
+        /* Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(250, 250, 248, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-sand);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            list-style: none;
+        }
+
+        .nav-dropdown.active .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-dropdown-menu li {
+            padding: 0;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            color: var(--color-charcoal);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown-menu a:hover {
+            background-color: var(--color-cream);
+            color: var(--color-dark-brown);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: var(--spacing-md);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            transition: var(--transition-smooth);
+            opacity: 0.5;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            color: var(--color-black);
+            opacity: 1;
+        }
+
+        .lang-btn.active {
+            font-weight: 500;
+        }
+
+        .lang-separator {
+            color: var(--color-black);
+            opacity: 0.3;
+            font-size: 0.75rem;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-black);
+            margin: 5px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.8);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background-color: var(--color-warm-white);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 0;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                z-index: 999;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-sand);
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1.25rem 0;
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                background-color: var(--color-cream);
+                margin-top: 0.5rem;
+                padding-left: 1rem;
+            }
+
+            .nav-dropdown.active .nav-dropdown-menu {
+                display: block;
+            }
+
+            .lang-switcher {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.5)),
+                        url('landing.png') center/cover no-repeat;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            padding: var(--spacing-lg) 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-sand);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero-title {
+            color: var(--color-warm-white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-sand);
+            margin-bottom: var(--spacing-md);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 80vh;
+            background-color: var(--color-sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-taupe) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--color-brown);
+        }
+
+        /* ========================================
+           HISTORY & STATISTICS SECTION
+        ======================================== */
+        .history {
+            background-color: var(--color-warm-white);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .history-image {
+            aspect-ratio: 4/5;
+            background-color: var(--color-sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-taupe);
+        }
+
+        .history-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-taupe) 0%, var(--color-sand) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--color-brown);
+        }
+
+        .history-content h2 {
+            color: var(--color-black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .history-content .subtitle {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .history-content p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background-color: var(--color-cream);
+            border: 1px solid var(--color-sand);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-dark-brown);
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-black);
+        }
+
+        /* Statistics Animation */
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stat-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-item:nth-child(1) { transition-delay: 0s; }
+        .stat-item:nth-child(2) { transition-delay: 0.15s; }
+        .stat-item:nth-child(3) { transition-delay: 0.3s; }
+        .stat-item:nth-child(4) { transition-delay: 0.45s; }
+
+        /* ========================================
+           PRODUCT FEATURES SECTION
+        ======================================== */
+        .features {
+            background-color: var(--color-warm-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            border: 1px solid var(--color-sand);
+            background-color: #FFFFFF;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border-radius: 4px;
+        }
+
+        .feature-item:hover {
+            border-color: var(--color-beige);
+            background-color: var(--color-beige);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(212, 196, 176, 0.3);
+            transform: scale(1.02);
+        }
+
+        .feature-item:hover .feature-icon svg {
+            stroke: var(--color-dark-brown);
+        }
+
+        .feature-item:hover .feature-content h4,
+        .feature-item:hover .feature-content p {
+            color: var(--color-dark-brown);
+        }
+
+        .feature-item.selected {
+            border-color: var(--color-beige);
+            background-color: var(--color-beige);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(212, 196, 176, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-item.selected .feature-icon svg {
+            stroke: var(--color-dark-brown);
+        }
+
+        .feature-item.selected .feature-content h4,
+        .feature-item.selected .feature-content p {
+            color: var(--color-dark-brown);
+        }
+
+        .features-list.left .feature-item {
+            flex-direction: row;
+            text-align: left;
+        }
+
+        .features-list.right .feature-item {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--color-black);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .feature-content h4 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-content p {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            line-height: 1.5;
+        }
+
+        .features-image {
+            aspect-ratio: 3/4;
+            background-color: var(--color-sand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .features-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .features-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-taupe) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--color-brown);
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .features-image {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .features-list.right .feature-item {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        /* ========================================
+           PRODUCT CATALOGUE SECTION
+        ======================================== */
+        .catalogue {
+            padding: 0;
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.5)),
+                        url('coleçao.png') center/cover no-repeat;
+        }
+
+        .catalogue .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .catalogue .section-header h2 {
+            color: var(--color-warm-white);
+        }
+
+        .catalogue .section-header p {
+            color: var(--color-sand);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .catalogue .btn-primary {
+            background-color: var(--color-beige);
+            color: var(--color-dark-brown);
+        }
+
+        .catalogue .btn-primary:hover {
+            background-color: var(--color-sand) !important;
+            color: var(--color-dark-brown) !important;
+            box-shadow: 0 8px 20px rgba(232, 224, 213, 0.5);
+        }
+
+        .catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .product-card {
+            background-color: var(--color-warm-white);
+            transition: var(--transition-smooth);
+            border: 1px solid var(--color-sand);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background-color: var(--color-sand);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-taupe) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 0.875rem;
+            color: var(--color-brown);
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-image-placeholder {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: var(--spacing-md);
+        }
+
+        .product-name {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .product-description {
+            font-size: 0.875rem;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .product-price {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            color: var(--color-dark-brown);
+        }
+
+        /* ========================================
+           PORTFOLIO SECTIONS
+        ======================================== */
+        .portfolio {
+            background-color: var(--color-warm-white);
+        }
+
+        .portfolio-ambiente {
+            background-color: var(--color-cream);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--color-sand);
+        }
+
+        .portfolio-item.large {
+            grid-column: span 2;
+        }
+
+        .portfolio-image {
+            aspect-ratio: 16/10;
+            background-color: var(--color-sand);
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-item.large .portfolio-image {
+            aspect-ratio: 21/9;
+        }
+
+        .portfolio-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-taupe) 0%, var(--color-sand) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--color-brown);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--spacing-md);
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.8), transparent);
+            transform: translateY(100%);
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-item:hover .portfolio-image-placeholder {
+            transform: scale(1.05);
+        }
+
+        .portfolio-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-warm-white);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .portfolio-caption {
+            font-size: 0.875rem;
+            color: var(--color-sand);
+        }
+
+        /* ========================================
+           CONTACT SECTION
+        ======================================== */
+        .contact {
+            background-color: var(--color-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info h3 {
+            color: var(--color-black);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-details {
+            margin-top: var(--spacing-lg);
+        }
+
+        .contact-detail-item {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-sand);
+        }
+
+        .contact-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-detail-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .contact-detail-value {
+            color: var(--color-charcoal);
+        }
+
+        .contact-legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .contact-legal a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.875rem;
+            color: var(--color-dark-brown);
+            background: var(--color-warm-white);
+            border: 1px solid var(--color-sand);
+            border-radius: 999px;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-legal a:hover {
+            color: var(--color-black);
+            border-color: var(--color-brown);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .contact-form {
+            background-color: var(--color-warm-white);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-sand);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-charcoal);
+            background-color: var(--color-cream);
+            border: 1px solid var(--color-sand);
+            transition: var(--transition-smooth);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-brown);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        .footer {
+            background-color: var(--color-black);
+            color: var(--color-sand);
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            color: var(--color-warm-white);
+            margin-bottom: var(--spacing-md);
+            font-weight: 500;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-warm-white);
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-company-info {
+            font-size: 0.8125rem;
+            line-height: 1.8;
+            color: var(--color-taupe);
+        }
+
+        .footer-company-info strong {
+            color: var(--color-sand);
+            font-weight: 500;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            font-size: 0.8125rem;
+            color: var(--color-taupe);
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: var(--color-warm-white);
+        }
+
+        .footer-link.manage-cookies {
+            background: none;
+            border: 1px solid var(--color-taupe);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            margin-top: 0.5rem;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .footer-link.manage-cookies:hover {
+            border-color: var(--color-warm-white);
+            color: var(--color-warm-white);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--color-taupe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover {
+            border-color: var(--color-warm-white);
+            background-color: var(--color-warm-white);
+        }
+
+        .footer-social svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-taupe);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-social a:hover svg {
+            fill: var(--color-black);
+        }
+
+        .footer-newsletter {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-newsletter p {
+            font-size: 0.8125rem;
+            color: var(--color-taupe);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.8125rem;
+            background-color: transparent;
+            border: 1px solid var(--color-taupe);
+            color: var(--color-warm-white);
+            border-radius: 4px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: var(--color-taupe);
+        }
+
+        .newsletter-form button {
+            padding: 0.75rem 1rem;
+            background-color: var(--color-beige);
+            color: var(--color-dark-brown);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--color-sand) !important;
+            color: var(--color-dark-brown) !important;
+        }
+
+        .newsletter-consent {
+            font-size: 0.6875rem;
+            color: var(--color-taupe);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(184, 169, 154, 0.2);
+            padding-top: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--color-taupe);
+        }
+
+        .footer-credit {
+            font-size: 0.6875rem;
+            color: var(--color-taupe);
+            opacity: 0.7;
+        }
+
+        .footer-payments {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-payments span {
+            font-size: 0.6875rem;
+            color: var(--color-taupe);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .payment-icon {
+            background-color: var(--color-warm-white);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            color: var(--color-black);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            list-style: none;
+        }
+
+        .footer-bottom-links a {
+            font-size: 0.6875rem;
+            color: var(--color-taupe);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--color-warm-white);
+        }
+
+        /* ========================================
+           COOKIE CONSENT POPUP
+        ======================================== */
+        .cookie-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 10000;
+            background-color: var(--color-warm-white);
+            padding: var(--spacing-lg);
+            max-width: 450px;
+            width: calc(100% - 48px);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--color-sand);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .cookie-popup.hidden {
+            display: none;
+        }
+
+        .cookie-popup h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cookie-popup p {
+            font-size: 0.875rem;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.6;
+        }
+
+        .cookie-info-list {
+            list-style: none;
+            margin: var(--spacing-sm) 0;
+            padding-left: 0;
+        }
+
+        .cookie-info-list li {
+            font-size: 0.8125rem;
+            color: var(--color-charcoal);
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .cookie-info-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--color-dark-brown);
+            font-weight: bold;
+        }
+
+        .cookie-popup a {
+            color: var(--color-dark-brown);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .cookie-popup a:hover {
+            color: var(--color-black);
+        }
+
+        .cookie-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .cookie-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            text-align: center;
+        }
+
+        .cookie-btn-accept {
+            background-color: var(--color-dark-brown);
+            color: var(--color-warm-white);
+        }
+
+        .cookie-btn-accept:hover {
+            background-color: var(--color-black);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cookie-btn-reject {
+            background-color: transparent;
+            color: var(--color-charcoal);
+            border: 1px solid var(--color-taupe);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: var(--color-charcoal);
+            background-color: var(--color-cream);
+            color: var(--color-black);
+        }
+
+        .cookie-btn-personalize {
+            background-color: transparent;
+            color: var(--color-dark-brown);
+            border: 1px solid var(--color-dark-brown);
+        }
+
+        .cookie-btn-personalize:hover {
+            background-color: var(--color-dark-brown);
+            color: var(--color-warm-white);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-popup {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                width: auto;
+                max-width: none;
+                padding: var(--spacing-md);
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cookie-popup {
+                padding: 1rem;
+                max-height: calc(100vh - 100px);
+            }
+
+            .cookie-popup h3 {
+                font-size: 1.25rem;
+            }
+
+            .cookie-buttons {
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
+        }
+
+        /* ========================================
+           FLOATING WHATSAPP BUTTON
+        ======================================== */
+        /* Fixed position keeps button visible while scrolling */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+        }
+
+        /* Circular button with WhatsApp green color */
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background-color: var(--color-beige);
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(212, 196, 176, 0.4);
+            transition: var(--transition-smooth);
+        }
+
+        /* Hover effect: slight scale-up and stronger shadow */
+        .whatsapp-float a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 196, 176, 0.6);
+            background-color: var(--color-taupe);
+        }
+
+        /* WhatsApp icon styling */
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--color-dark-brown);
+        }
+
+        /* Mobile responsive: slightly smaller on small screens */
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .whatsapp-float a {
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* ========================================
+           RESPONSIVE STYLES
+        ======================================== */
+        @media (max-width: 1024px) {
+            :root {
+                --spacing-lg: 3rem;
+                --spacing-xl: 4rem;
+                --spacing-2xl: 5rem;
+            }
+
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .nav-logo img {
+                height: 50px;
+                transform: scale(1.1);
+            }
+
+            .hero-container,
+            .history-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero-image {
+                height: 50vh;
+            }
+
+            .hero-content {
+                padding: var(--spacing-md) 0;
+            }
+
+            .catalogue-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-sm);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-md: 1.5rem;
+                --spacing-lg: 2.5rem;
+                --spacing-xl: 3rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .btn {
+                padding: 0.875rem 1.75rem;
+                font-size: 0.8125rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 60vh;
+                background-position: center;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .catalogue-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .catalogue {
+                min-height: 60vh;
+            }
+
+            .portfolio-item.large {
+                grid-column: span 1;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: var(--spacing-sm);
+            }
+
+            .stat-number {
+                font-size: 2.25rem;
+            }
+
+            .stat-label {
+                font-size: 0.6875rem;
+            }
+
+            .contact-detail-item {
+                margin-bottom: var(--spacing-sm);
+                padding-bottom: var(--spacing-sm);
+            }
+
+            .contact-legal {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-legal a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .footer-column {
+                padding-bottom: var(--spacing-md);
+                border-bottom: 1px solid rgba(184, 169, 154, 0.1);
+            }
+
+            .footer-column:last-child {
+                border-bottom: none;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-bottom-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo img {
+                height: 40px;
+            }
+
+            .hero {
+                min-height: 50vh;
+            }
+
+            .hero-eyebrow {
+                font-size: 0.6875rem;
+            }
+
+            .section-header p {
+                font-size: 0.9375rem;
+            }
+
+            .product-info {
+                padding: var(--spacing-sm);
+            }
+
+            .product-name {
+                font-size: 1.125rem;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float a {
+                width: 56px;
+                height: 56px;
+            }
+
+            .whatsapp-float svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        /* Adjust WhatsApp button when cookie popup is visible */
+        @media (max-width: 768px) {
+            body:has(.cookie-popup:not(.hidden)) .whatsapp-float {
+                bottom: auto;
+                top: 80px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         COOKIE CONSENT POPUP
+    ======================================== -->
+    <div id="cookieConsent" class="cookie-popup">
+        <h3 data-pt="Privacidade e Cookies" data-en="Privacy & Cookies">Privacidade e Cookies</h3>
+        <p data-pt="Respeitamos a sua privacidade. Este site utiliza cookies para:" data-en="We respect your privacy. This site uses cookies to:">Respeitamos a sua privacidade. Este site utiliza cookies para:</p>
+        <ul class="cookie-info-list">
+            <li data-pt="Garantir o funcionamento essencial do site" data-en="Ensure essential site functionality">Garantir o funcionamento essencial do site</li>
+            <li data-pt="Analisar o desempenho e melhorar a experiência" data-en="Analyze performance and improve experience">Analisar o desempenho e melhorar a experiência</li>
+            <li data-pt="Personalizar conteúdo e publicidade" data-en="Personalize content and advertising">Personalizar conteúdo e publicidade</li>
+        </ul>
+        <p data-pt="Pode aceitar todos, rejeitar opcionais ou personalizar as suas preferências. Consulte a nossa <a href='cookies.html'>Política de Cookies</a> para mais detalhes." data-en="You can accept all, reject optional cookies, or customize your preferences. See our <a href='cookies.html'>Cookie Policy</a> for details.">Pode aceitar todos, rejeitar opcionais ou personalizar as suas preferências. Consulte a nossa <a href="cookies.html">Política de Cookies</a> para mais detalhes.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-btn-accept" onclick="handleCookieChoice('accepted')" data-pt="Aceitar Todos" data-en="Accept All">Aceitar Todos</button>
+            <button class="cookie-btn cookie-btn-reject" onclick="handleCookieChoice('rejected')" data-pt="Rejeitar Opcionais" data-en="Reject Optional">Rejeitar Opcionais</button>
+            <button class="cookie-btn cookie-btn-personalize" onclick="handleCookieChoice('personalize')" data-pt="Personalizar" data-en="Customize">Personalizar</button>
+        </div>
+    </div>
+
+    <!-- ========================================
+         NAVIGATION
+    ======================================== -->
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <img src="logo.png" alt="Ambiente Interiores">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link" data-pt="Início" data-en="Home">Início</a></li>
+                <li><a href="historia.html#momentos-marcantes" class="nav-link" data-pt="História" data-en="Heritage">História</a></li>
+                <li><a href="collection.html" class="nav-link" data-pt="Catálogo" data-en="Catalogue">Catálogo</a></li>
+                <li class="nav-dropdown">
+                    <a href="portfolio.html" class="nav-link" data-pt="Portfólio" data-en="Portfolio">Portfólio</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="portfolio.html" data-pt="Particulares" data-en="Private">Particulares</a></li>
+                        <li><a href="profissionais.html" data-pt="Profissionais" data-en="Professional">Profissionais</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="pt">PT</button>
+                <span class="lang-separator">|</span>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+    ======================================== -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-pt="Criamos Ambientes que Contam Histórias" data-en="We Create Environments that Tell Stories">Criamos Ambientes que Contam Histórias</h1>
+                <p class="hero-subtitle" data-pt="Combinamos design moderno, materiais premium e atenção ao detalhe para transformar espaços em experiências." data-en="We combine modern design, premium materials, and attention to detail to transform spaces into experiences.">Combinamos design moderno, materiais premium e atenção ao detalhe para transformar espaços em experiências.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PRODUCT CATALOGUE SECTION
+    ======================================== -->
+    <section class="catalogue" id="catalogue">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-pt="A Nossa Coleção" data-en="Our Collection">A Nossa Coleção</h2>
+                <p data-pt="Cada peça do nosso catálogo representa a união harmoniosa entre forma e função, criada com os melhores materiais por artesãos qualificados." data-en="Each piece in our catalogue represents the harmonious union of form and function, crafted from the finest materials by skilled artisans.">Cada peça do nosso catálogo representa a união harmoniosa entre forma e função, criada com os melhores materiais por artesãos qualificados.</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="collection.html" class="btn btn-primary" data-pt="Descobrir Mais" data-en="Discover More">Descobrir Mais</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         COMPANY HISTORY & STATISTICS SECTION
+    ======================================== -->
+    <section class="section history" id="history">
+        <div class="container">
+            <div class="history-grid">
+                <div class="history-image">
+                    <img src="sobre.png" alt="História da Ambiente Interiores" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="history-content">
+                    <h2 data-pt="Uma Herança de Artesanato" data-en="A Heritage of Craftsmanship">Uma Herança de Artesanato</h2>
+                    <p class="subtitle" data-pt="Fundado na tradição, refinado pela inovação" data-en="Founded on tradition, refined through innovation">Fundado na tradição, refinado pela inovação</p>
+                    <p data-pt="Fundada há mais de três décadas, a Ambiente Interiores nasceu de uma profunda paixão pela marcenaria e pela criação de mobiliário de excelência. O nosso percurso começou num pequeno atelier familiar, onde cada peça era cuidadosamente trabalhada à mão, um compromisso que permanece até hoje." data-en="Founded over three decades ago, Ambiente Interiores was born from a deep passion for woodworking and creating excellent furniture. Our journey began in a small family atelier, where each piece was carefully handcrafted, a commitment that remains to this day.">
+                        Fundada há mais de três décadas, a Ambiente Interiores nasceu de uma profunda paixão pela marcenaria e pela criação de mobiliário de excelência. O nosso percurso começou num pequeno atelier familiar, onde cada peça era cuidadosamente trabalhada à mão, um compromisso que permanece até hoje.
+                    </p>
+                    <p data-pt="Ao longo dos anos, crescemos sem perder a alma artesanal que nos define. Investimos em técnicas contemporâneas, tecnologias de precisão e práticas sustentáveis, sem nunca abdicar da sensibilidade artística que transforma mobiliário em verdadeiras obras de design." data-en="Over the years, we have grown without losing the artisanal soul that defines us. We invest in contemporary techniques, precision technologies and sustainable practices, without ever giving up the artistic sensibility that transforms furniture into true works of design.">
+                        Ao longo dos anos, crescemos sem perder a alma artesanal que nos define. Investimos em técnicas contemporâneas, tecnologias de precisão e práticas sustentáveis, sem nunca abdicar da sensibilidade artística que transforma mobiliário em verdadeiras obras de design.
+                    </p>
+                    <p data-pt="Hoje, somos reconhecidos pela combinação entre estética intemporal, funcionalidade moderna e execução impecável. Cada criação reflete a dedicação dos nossos mestres artesãos, que colocam experiência, detalhe e autenticidade em cada linha, cada textura e cada acabamento." data-en="Today, we are recognised for the combination of timeless aesthetics, modern functionality and impeccable execution. Each creation reflects the dedication of our master craftsmen, who bring experience, detail and authenticity to every line, texture and finish.">
+                        Hoje, somos reconhecidos pela combinação entre estética intemporal, funcionalidade moderna e execução impecável. Cada criação reflete a dedicação dos nossos mestres artesãos, que colocam experiência, detalhe e autenticidade em cada linha, cada textura e cada acabamento.
+                    </p>
+                    <p data-pt="Mais do que mobiliário, criamos ambientes que elevam a vida das pessoas. Cada projeto representa uma celebração da nossa herança e um passo em direção ao futuro do design português." data-en="More than furniture, we create environments that elevate people's lives. Each project represents a celebration of our heritage and a step towards the future of Portuguese design.">
+                        Mais do que mobiliário, criamos ambientes que elevam a vida das pessoas. Cada projeto representa uma celebração da nossa herança e um passo em direção ao futuro do design português.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="historia.html" class="btn btn-outline" data-pt="Saber Mais Sobre Nós" data-en="Learn More About Us">Saber Mais Sobre Nós</a>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: var(--spacing-lg);">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="+35">0</div>
+                    <div class="stat-label" data-pt="Anos de Excelência" data-en="Years of Excellence">Anos de Excelência</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="+1000">0</div>
+                    <div class="stat-label" data-pt="Projetos Concluídos" data-en="Projects Completed">Projetos Concluídos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="+40">0</div>
+                    <div class="stat-label" data-pt="Mestres Artesãos" data-en="Master Craftsmen">Mestres Artesãos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="+100%">0</div>
+                    <div class="stat-label" data-pt="Produção Nacional" data-en="National Production">Produção Nacional</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PRODUCT FEATURES SECTION
+    ======================================== -->
+    <section class="section features">
+        <div class="container">
+            <div class="features-grid">
+                <!-- Left Features - Materials & Structure -->
+                <div class="features-list left">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4 data-pt="Tecido 100% Poliéster" data-en="100% Polyester Fabric">Tecido 100% Poliéster</h4>
+                            <p data-pt="Tecido durável e fácil de limpar para uso diário." data-en="Durable and easy-to-clean fabric for daily use.">Tecido durável e fácil de limpar para uso diário.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4 data-pt="Estrutura em Madeira Maciça" data-en="Solid Wood Frame">Estrutura em Madeira Maciça</h4>
+                            <p data-pt="Construção robusta para máxima durabilidade." data-en="Robust construction for maximum durability.">Construção robusta para máxima durabilidade.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4 data-pt="Espuma de Alta Qualidade" data-en="High Quality Foam">Espuma de Alta Qualidade</h4>
+                            <p data-pt="Conforto superior com espuma de alta densidade." data-en="Superior comfort with high-density foam.">Conforto superior com espuma de alta densidade.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Product Video -->
+                <div class="features-image">
+                    <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="Cadeira.webm" type="video/webm">
+                    </video>
+                </div>
+
+                <!-- Right Features - Functionality & Production -->
+                <div class="features-list right">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4 data-pt="Deslizadores Incluídos" data-en="Gliders Included">Deslizadores Incluídos</h4>
+                            <p data-pt="Protege o pavimento e facilita a movimentação." data-en="Protects flooring and enables easy movement.">Protege o pavimento e facilita a movimentação.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 12h16M4 12c-1.1 0-2-.9-2-2s.9-2 2-2M4 12c-1.1 0-2 .9-2 2s.9 2 2 2M20 12c1.1 0 2-.9 2-2s-.9-2-2-2M20 12c1.1 0 2 .9 2 2s-.9 2 2 2"/></svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4 data-pt="Com Cintas Elásticas" data-en="With Elastic Straps">Com Cintas Elásticas</h4>
+                            <p data-pt="Sistema de suspensão para maior conforto." data-en="Suspension system for enhanced comfort.">Sistema de suspensão para maior conforto.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.85M19 21V10.85"/></svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4 data-pt="Produzido por Cunha Mobiliário" data-en="Produced by Cunha Mobiliário">Produzido por Cunha Mobiliário</h4>
+                            <p data-pt="Fabricado com excelência em Portugal." data-en="Manufactured with excellence in Portugal.">Fabricado com excelência em Portugal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CUSTOM-MADE FURNITURE SECTION
+    ======================================== -->
+    <section class="section custom-furniture" id="custom">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-pt="Mobiliário Personalizado" data-en="Custom-Made Furniture">Mobiliário Personalizado</h2>
+                <p data-pt="Na Ambiente Interiores, oferecemos a possibilidade de personalizar todo o mobiliário estofado, incluindo dimensões, tecidos e acabamentos. Ao contactar a nossa equipa, podemos produzir uma peça adaptada à sua visão e pedido." data-en="At Ambiente Interiores, we offer the ability to customize all upholstered furniture, including dimensions, fabrics, and finishes. By contacting our team, we can produce a piece tailored to your vision and request.">Na Ambiente Interiores, oferecemos a possibilidade de personalizar todo o mobiliário estofado, incluindo dimensões, tecidos e acabamentos. Ao contactar a nossa equipa, podemos produzir uma peça adaptada à sua visão e pedido.</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="#contact" class="btn btn-primary" data-pt="TENHO INTERESSE" data-en="I AM INTERESTED">TENHO INTERESSE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT / QUOTE REQUEST SECTION
+    ======================================== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-pt="Inicie o Seu Projeto" data-en="Begin Your Project">Inicie o Seu Projeto</h3>
+                    <p data-pt="Se procura desenvolver uma peça de destaque exclusiva ou renovar por completo um espaço interior, a nossa equipa está pronta para dar vida à sua visão. Iniciamos cada projeto através de um diálogo aberto, pelo que o convidamos a partilhar connosco as suas ideias e objetivos." data-en="Whether you seek to develop an exclusive statement piece or completely renovate an interior space, our team is ready to bring your vision to life. We start each project through open dialogue, so we invite you to share your ideas and goals with us.">
+                        Se procura desenvolver uma peça de destaque exclusiva ou renovar por completo um espaço interior, a nossa equipa está pronta para dar vida à sua visão. Iniciamos cada projeto através de um diálogo aberto, pelo que o convidamos a partilhar connosco as suas ideias e objetivos.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <p class="contact-detail-label" data-pt="Localização" data-en="Location">Localização</p>
+                            <p class="contact-detail-value">Est. Nacional 209, nº 169<br>4580-439 Lordelo</p>
+                        </div>
+                        <div class="contact-detail-item">
+                            <p class="contact-detail-label" data-pt="Telefone" data-en="Telephone">Telefone</p>
+                            <p class="contact-detail-value">+351 224 440 774</p>
+                        </div>
+                        <div class="contact-detail-item">
+                            <p class="contact-detail-label" data-pt="Email" data-en="Email">Email</p>
+                            <p class="contact-detail-value">comercial@ambientes-interiores.com</p>
+                        </div>
+                        <div class="contact-detail-item">
+                            <p class="contact-detail-label" data-pt="Horário" data-en="Opening Hours">Horário</p>
+                            <p class="contact-detail-value" data-pt="Segunda – Sexta: 9h00 – 18h00<br>Sábado: 10h00 – 14h00" data-en="Monday – Friday: 9h00 – 18h00<br>Saturday: 10h00 – 14h00">Segunda – Sexta: 9h00 – 18h00<br>Sábado: 10h00 – 14h00</p>
+                        </div>
+                    </div>
+                    <div class="contact-legal">
+                        <a href="privacy.html" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a>
+                        <a href="terms.html" data-pt="Termos e Condições" data-en="Terms & Conditions">Termos e Condições</a>
+                        <a href="cookies.html" data-pt="Política de Cookies" data-en="Cookie Policy">Política de Cookies</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label" for="name" data-pt="Nome Completo" data-en="Full Name">Nome Completo</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email" data-pt="Endereço de Email" data-en="Email Address">Endereço de Email</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="project-type" data-pt="Tipo de Projeto" data-en="Project Type">Tipo de Projeto</label>
+                            <select id="project-type" class="form-select" required>
+                                <option value="" data-pt="Selecione o tipo de projeto" data-en="Select project type">Selecione o tipo de projeto</option>
+                                <option value="private-interior" data-pt="Design de Interiores Privado" data-en="Private Interior Design">Design de Interiores Privado</option>
+                                <option value="private-furniture" data-pt="Mobiliário Personalizado" data-en="Private Furniture Commission">Mobiliário Personalizado</option>
+                                <option value="professional-hospitality" data-pt="Profissional – Hotelaria" data-en="Professional – Hospitality">Profissional – Hotelaria</option>
+                                <option value="professional-corporate" data-pt="Profissional – Corporativo" data-en="Professional – Corporate">Profissional – Corporativo</option>
+                                <option value="professional-retail" data-pt="Profissional – Retalho" data-en="Professional – Retail">Profissional – Retalho</option>
+                                <option value="other" data-pt="Outra Consulta" data-en="Other Enquiry">Outra Consulta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message" data-pt="Mensagem" data-en="Message">Mensagem</label>
+                            <textarea id="message" class="form-textarea" data-pt-placeholder="Por favor descreva os requisitos do seu projeto, materiais preferidos, prazo e outros detalhes relevantes..." data-en-placeholder="Please describe your project requirements, preferred materials, timeline, and any other relevant details..." placeholder="Por favor descreva os requisitos do seu projeto, materiais preferidos, prazo e outros detalhes relevantes..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-pt="Solicitar Consulta" data-en="Request Consultation">Solicitar Consulta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FLOATING WHATSAPP BUTTON
+         Opens WhatsApp chat when clicked
+    ======================================== -->
+    <div class="whatsapp-float">
+        <!-- Replace 351XXXXXXXXX with actual phone number -->
+        <a href="https://wa.me/351XXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            <!-- Official WhatsApp SVG icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <!-- Column 1: Logo & Social -->
+                <div class="footer-column">
+                    <a href="#" class="footer-logo">Ambiente Interiores</a>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Pinterest">
+                            <svg viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Legal -->
+                <div class="footer-column">
+                    <h4 data-pt="Legal" data-en="Legal">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html" class="footer-link" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a></li>
+                        <li><a href="terms.html" class="footer-link" data-pt="Termos e Condições" data-en="Terms & Conditions">Termos e Condições</a></li>
+                        <li><a href="cookies.html" class="footer-link" data-pt="Política de Cookies" data-en="Cookies Policy">Política de Cookies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Newsletter -->
+                <div class="footer-column">
+                    <h4 data-pt="Newsletter" data-en="Newsletter">Newsletter</h4>
+                    <div class="footer-newsletter">
+                        <p data-pt="Subscreva para novidades e inspiração de design." data-en="Subscribe for news and design inspiration.">Subscreva para novidades e inspiração de design.</p>
+                        <form class="newsletter-form" onsubmit="return handleNewsletter(event)">
+                            <input type="email" placeholder="Email" required>
+                            <button type="submit" data-pt="Subscrever" data-en="Subscribe">Subscrever</button>
+                        </form>
+                        <p class="newsletter-consent" data-pt="Ao subscrever, concorda com a nossa Política de Privacidade. Pode cancelar a qualquer momento." data-en="By subscribing, you agree to our Privacy Policy. You can unsubscribe at any time.">Ao subscrever, concorda com a nossa Política de Privacidade. Pode cancelar a qualquer momento.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© <script>document.write(new Date().getFullYear())</script> Ambiente Interiores, Lda. <span data-pt="Todos os direitos reservados." data-en="All rights reserved.">Todos os direitos reservados.</span></p>
+                <p class="footer-credit" data-pt="Site desenvolvido por AGB" data-en="Website developed by AGB">Site desenvolvido por AGB</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         STATISTICS ANIMATION SCRIPT
+    ======================================== -->
+    <script>
+        // Count-up animation for statistics
+        function animateCountUp(element, target, prefix = '', suffix = '') {
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = prefix + target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = prefix + Math.floor(current) + suffix;
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for triggering animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItems = entry.target.querySelectorAll('.stat-item');
+
+                    statItems.forEach(item => {
+                        item.classList.add('animate');
+
+                        const numberElement = item.querySelector('.stat-number');
+                        const text = numberElement.getAttribute('data-target');
+                        const numericValue = parseInt(text.replace(/\D/g, ''));
+                        const prefix = text.startsWith('+') ? '+' : '';
+                        const suffix = text.replace(/[0-9+]/g, '');
+
+                        animateCountUp(numberElement, numericValue, prefix, suffix);
+                    });
+
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe the stats grid
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsGrid = document.querySelector('.stats-grid');
+            if (statsGrid) {
+                statsObserver.observe(statsGrid);
+            }
+        });
+
+        // Language Switcher
+        let currentLang = 'pt';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            // Update all elements with data-pt and data-en attributes
+            document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+                if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                    // Handle placeholder for inputs
+                    const ptPlaceholder = el.getAttribute('data-pt-placeholder');
+                    const enPlaceholder = el.getAttribute('data-en-placeholder');
+                    if (ptPlaceholder && enPlaceholder) {
+                        el.placeholder = lang === 'pt' ? ptPlaceholder : enPlaceholder;
+                    }
+                } else {
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                }
+            });
+
+            // Handle textarea placeholder separately
+            const textarea = document.querySelector('textarea[data-pt-placeholder]');
+            if (textarea) {
+                textarea.placeholder = lang === 'pt'
+                    ? textarea.getAttribute('data-pt-placeholder')
+                    : textarea.getAttribute('data-en-placeholder');
+            }
+
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Add click handlers to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // Feature item selection
+        document.querySelectorAll('.feature-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove selected class from all feature items
+                document.querySelectorAll('.feature-item').forEach(fi => {
+                    fi.classList.remove('selected');
+                });
+                // Add selected class to clicked item
+                item.classList.add('selected');
+            });
+        });
+
+        // Cookie consent management
+        function handleCookieChoice(choice) {
+            const popup = document.getElementById('cookieConsent');
+            if (!popup) return;
+
+            if (choice === 'personalize') {
+                localStorage.setItem('cookieConsent', 'personalize');
+                // Redirect to cookies policy page for detailed preferences
+                window.location.href = 'cookies.html';
+                return;
+            }
+
+            localStorage.setItem('cookieConsent', choice);
+
+            // Hide the popup immediately
+            popup.classList.add('hidden');
+
+            // Handle different consent choices
+            if (choice === 'accepted') {
+                // Enable all cookies: analytics, marketing, etc.
+                enableAllCookies();
+                console.log('✓ All cookies accepted');
+            } else if (choice === 'rejected') {
+                // Only essential cookies
+                disableOptionalCookies();
+                console.log('✓ Optional cookies rejected - only essential cookies active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('cookieConsent');
+            if (!popup) return;
+            const consent = localStorage.getItem('cookieConsent');
+            if (consent) {
+                popup.classList.add('hidden');
+            }
+        });
+
+        function enableAllCookies() {
+            // Enable analytics (Google Analytics, etc.)
+            // Example: window.dataLayer = window.dataLayer || [];
+            // Example: gtag('consent', 'update', { analytics_storage: 'granted' });
+
+            // Enable marketing cookies
+            // Example: Enable Facebook Pixel, etc.
+
+            console.log('Analytics and marketing cookies enabled');
+        }
+
+        function disableOptionalCookies() {
+            // Disable analytics and marketing cookies
+            // Example: gtag('consent', 'update', { analytics_storage: 'denied' });
+
+            console.log('Analytics and marketing cookies disabled');
+        }
+
+        // Newsletter handler placeholder
+        function handleNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            // Integrate with your email marketing service (e.g., Mailchimp, Brevo)
+            alert('Newsletter subscription: ' + email + '\nIntegrate with your email marketing platform.');
+            event.target.reset();
+            return false;
+        }
+
+        // Portfolio dropdown click toggle
+        const navDropdown = document.querySelector('.nav-dropdown');
+        const dropdownLink = navDropdown ? navDropdown.querySelector('.nav-link') : null;
+
+        if (dropdownLink) {
+            dropdownLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                navDropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navDropdown.contains(e.target)) {
+                    navDropdown.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    navDropdown.classList.remove('active');
+                }
+            });
+        }
+
+
+        // Header fade on scroll
+        let lastScrollY = 0;
+        let ticking = false;
+        const nav = document.querySelector('.nav');
+
+        function updateNav() {
+            const currentScrollY = window.scrollY;
+
+            // Show nav at the very top
+            if (currentScrollY < 100) {
+                nav.classList.remove('hidden');
+                nav.classList.add('visible');
+            }
+            // Hide when scrolling down, show when scrolling up
+            else if (currentScrollY > lastScrollY) {
+                // Scrolling down
+                nav.classList.add('hidden');
+                nav.classList.remove('visible');
+            } else {
+                // Scrolling up
+                nav.classList.remove('hidden');
+                nav.classList.add('visible');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateNav);
+                ticking = true;
+            }
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const navMenu = document.getElementById('navMenu');
+
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMobileMenu() {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Toggle menu on button click
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close menu when overlay is clicked
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // Close menu when a nav link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Don't close if it's a dropdown parent
+                if (!link.parentElement.classList.contains('nav-dropdown')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu when window is resized to desktop size
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+
+</body>
+</html>

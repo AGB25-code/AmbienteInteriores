@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos e Condições | Ambiente Interiores</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-cream: #F5F1EB;
+            --color-warm-white: #FAFAF8;
+            --color-sand: #E8E0D5;
+            --color-brown: #8B7355;
+            --color-dark-brown: #5C4A3A;
+            --color-charcoal: #3A3A3A;
+            --color-black: #1A1A1A;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--color-black);
+            background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-warm-white) 20%, #fff 100%);
+            line-height: 1.7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-lg);
+        }
+
+        .top-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--color-dark-brown);
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-smooth);
+        }
+
+        .top-link:hover {
+            color: var(--color-black);
+            transform: translateX(-2px);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            color: var(--color-black);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 3.5vw, 3.1rem);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .lead {
+            max-width: 760px;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        section {
+            background: var(--color-warm-white);
+            border: 1px solid var(--color-sand);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 0.75rem;
+            color: var(--color-charcoal);
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            color: var(--color-charcoal);
+        }
+
+        ul li { margin-bottom: 0.5rem; }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--color-brown);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-black);
+            margin: 5px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.8);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+
+        /* Mobile Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: var(--color-warm-white);
+            padding: 5rem 2rem 2rem;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            z-index: 999;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+            list-style: none;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu li {
+            width: 100%;
+            border-bottom: 1px solid var(--color-sand);
+        }
+
+        .nav-link {
+            display: block;
+            padding: 1.25rem 0;
+            font-size: 1rem;
+            width: 100%;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover {
+            color: var(--color-dark-brown);
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page {
+                padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+                padding-top: 4rem;
+            }
+
+            .top-link {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page {
+                padding-top: 3.5rem;
+            }
+        }
+
+        /* ========================================
+           COOKIE CONSENT POPUP
+        ======================================== */
+        .cookie-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 10000;
+            background-color: var(--color-warm-white);
+            padding: var(--spacing-md);
+            max-width: 340px;
+            width: calc(100% - 48px);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--color-sand);
+        }
+
+        .cookie-popup h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--color-black);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .cookie-popup p {
+            font-size: 0.875rem;
+            color: var(--color-charcoal);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
+        }
+
+        .cookie-popup a {
+            color: var(--color-dark-brown);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .cookie-btn {
+            flex: 1;
+            padding: 0.625rem 1rem;
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+
+        .cookie-btn-accept {
+            background-color: var(--color-dark-brown);
+            color: var(--color-warm-white);
+        }
+
+        .cookie-btn-accept:hover {
+            background-color: var(--color-black);
+        }
+
+        .cookie-btn-reject {
+            background-color: transparent;
+            color: var(--color-charcoal);
+            border: 1px solid var(--color-sand);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: var(--color-charcoal);
+            color: var(--color-black);
+        }
+
+        .cookie-popup.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .cookie-popup {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                width: auto;
+                max-width: none;
+                padding: var(--spacing-md);
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cookie-popup {
+                padding: 1rem;
+                max-height: calc(100vh - 100px);
+            }
+
+            .cookie-popup h3 {
+                font-size: 1.25rem;
+            }
+
+            .cookie-buttons {
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         COOKIE CONSENT POPUP
+    ======================================== -->
+    <div id="cookieConsent" class="cookie-popup">
+        <h3>Utilizamos Cookies</h3>
+        <p>Este site utiliza cookies para melhorar a sua experiência. Consulte a nossa <a href="cookies.html">Política de Cookies</a> para mais informações.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn cookie-btn-reject" onclick="handleCookieChoice('rejected')">Rejeitar</button>
+            <button class="cookie-btn cookie-btn-accept" onclick="handleCookieChoice('accepted')">Aceitar</button>
+        </div>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile menu toggle button -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Início</a></li>
+        <li><a href="historia.html#momentos-marcantes" class="nav-link">História</a></li>
+        <li><a href="collection.html" class="nav-link">Catálogo</a></li>
+        <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+        <li><a href="profissionais.html" class="nav-link">Profissionais</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <div class="page">
+        <a class="top-link" href="index.html">← Voltar à página inicial</a>
+        <h1>Termos e Condições</h1>
+        <p class="meta">Atualizados em novembro de 2025</p>
+        <p class="lead">Estes termos regem o uso do site e os serviços prestados pela Ambiente Interiores. Ao utilizar o site ou solicitar serviços, aceita estas condições.</p>
+
+        <section>
+            <h2>1. Quem somos</h2>
+            <p>Ambiente Interiores, Est. Nacional 209, nº 169, 4580-439 Lordelo. Contacto: <a href="mailto:comercial@ambientes-interiores.com">comercial@ambientes-interiores.com</a>, telefone +351 224 440 774.</p>
+        </section>
+
+        <section>
+            <h2>2. Uso do site</h2>
+            <p>O site destina-se a apresentar portfólio, produtos e a receber pedidos de contacto. É proibido uso para fins ilícitos, difusão de spam, tentativa de acesso não autorizado ou interrupção do serviço.</p>
+        </section>
+
+        <section>
+            <h2>3. Propriedade intelectual</h2>
+            <p>Todo o conteúdo (textos, imagens, vídeos, marca, logotipos) pertence à Ambiente Interiores ou é usado mediante licença. Não pode ser reproduzido sem autorização prévia.</p>
+        </section>
+
+        <section>
+            <h2>4. Orçamentos e encomendas</h2>
+            <ul>
+                <li>Os orçamentos são válidos pelo período indicado na proposta.</li>
+                <li>Encomendas personalizadas podem exigir adiantamento e aprovação de desenhos/amostras.</li>
+                <li>Alterações posteriores podem implicar revisão de preço e prazo.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>5. Preços e pagamentos</h2>
+            <p>Preços podem incluir ou não IVA conforme indicado. Condições de pagamento e cronogramas são definidos em proposta. Falta de pagamento pode suspender produção ou entrega.</p>
+        </section>
+
+        <section>
+            <h2>6. Prazos e entregas</h2>
+            <p>Os prazos são estimativas e podem variar por matérias-primas, aprovações e logística. Entregas e montagem podem ter custos adicionais, identificados na proposta.</p>
+        </section>
+
+        <section>
+            <h2>7. Garantia e assistência</h2>
+            <p>Produtos beneficiam de garantia legal e, quando aplicável, garantias comerciais indicadas em proposta. Contacte-nos para assistência ou reparação.</p>
+        </section>
+
+        <section>
+            <h2>8. Devoluções e cancelamentos</h2>
+            <p>Peças personalizadas não são passíveis de devolução, salvo defeito de fabrico. Para encomendas padrão, aplicam-se os prazos legais de devolução quando elegíveis.</p>
+        </section>
+
+        <section>
+            <h2>9. Responsabilidade</h2>
+            <p>Empregamos os melhores esforços para assegurar qualidade e informação correta. Não garantimos disponibilidade contínua do site. Na medida permitida por lei, excluímos responsabilidades por danos indiretos decorrentes do uso do site.</p>
+        </section>
+
+        <section>
+            <h2>10. Alterações aos termos</h2>
+            <p>Podemos atualizar estes termos para refletir alterações legais ou operacionais. Versões atualizadas serão publicadas neste endereço com indicação de data.</p>
+        </section>
+
+        <section>
+            <h2>11. Lei aplicável</h2>
+            <p>Estes termos regem-se pela lei portuguesa. Em caso de litígio, as partes podem recorrer a mediação ou aos tribunais competentes em Portugal.</p>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const navMenu = document.getElementById('navMenu');
+
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeMobileMenu() {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Cookie consent management
+        function handleCookieChoice(choice) {
+            localStorage.setItem('cookieConsent', choice);
+            const popup = document.getElementById('cookieConsent');
+            if (popup) {
+                popup.classList.add('hidden');
+            }
+
+            if (choice === 'accepted') {
+                console.log('Cookies accepted - enable tracking scripts here');
+            } else {
+                console.log('Cookies rejected - only essential cookies active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const consent = localStorage.getItem('cookieConsent');
+            const popup = document.getElementById('cookieConsent');
+            if (consent && popup) {
+                popup.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
